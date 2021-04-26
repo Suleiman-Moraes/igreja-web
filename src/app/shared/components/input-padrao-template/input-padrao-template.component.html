@@ -1,0 +1,7 @@
+<form [formGroup]="formulario">
+    <label class="titleLabel font-padrao" [for]="forName">
+        <strong>{{ nome }}</strong>
+    </label>
+    <ng-content></ng-content>
+    <app-form-field-error [formulario]="formulario.get(forName)"></app-form-field-error>
+</form>

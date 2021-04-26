@@ -1,0 +1,14 @@
+<form [formGroup]="formulario">
+    <app-input-padrao-template [for-name]="forName" [nome]="nome" [formulario]="formulario">
+        <p-inputNumber [formControlName]="forName" mode="decimal" [inputId]="forName" [useGrouping]="useGrouping"
+            [style]="{'width':'100%'}" [inputStyle]="{'width':'100%', 'font-family': 'Euclid Circular B'}"
+            [placeholder]="nome" [title]="nome" maxlength="18" (onBlur)="onBlur($event)" [min]="min" [max]="max"
+            [maxFractionDigits]="maxFractionDigits" [minFractionDigits]="minFractionDigits" *ngIf="!money">
+        </p-inputNumber>
+        <p-inputNumber [formControlName]="forName" mode="currency" [inputId]="forName" [useGrouping]="useGrouping"
+            [style]="{'width':'100%'}" [inputStyle]="{'width':'100%', 'font-family': 'Euclid Circular B'}"
+            [placeholder]="nome" [title]="nome" currency="BRL" [min]="min" [max]="max" (onBlur)="onBlur($event)"
+            *ngIf="money">
+        </p-inputNumber>
+    </app-input-padrao-template>
+</form>

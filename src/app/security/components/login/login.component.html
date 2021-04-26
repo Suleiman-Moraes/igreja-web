@@ -1,0 +1,23 @@
+<div class="container" style="max-width: 400px; margin: auto">
+
+    <div class="p-grid p-fluid">
+
+        <div class="p-col-12">
+            <h1>Login</h1>
+        </div>
+
+        <div class="p-col-12">
+            <input pInputText type="email" name="usuario" placeholder="E-mail" required [(ngModel)]="usuario">
+        </div>
+
+        <div class="p-col-12">
+            <input pInputText type="password" name="senha" placeholder="Senha" required [(ngModel)]="senha">
+        </div>
+
+        <div class="p-col-12">
+            <button pButton type="submit" label="Login" (click)="login(usuario, senha);"></button>
+        </div>
+
+    </div>
+
+</div>

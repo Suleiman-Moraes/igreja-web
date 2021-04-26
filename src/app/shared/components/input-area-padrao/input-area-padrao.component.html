@@ -1,0 +1,7 @@
+<form [formGroup]="formulario">
+    <app-input-padrao-template [for-name]="forName" [nome]="nome" [formulario]="formulario">
+        <textarea [placeholder]="nome" [title]="nome" type="text" pInputTextarea [id]="forName"
+            [formControlName]="forName" [style]="{'width':'100%'}" class="font-padrao" rows="2">
+        </textarea>
+    </app-input-padrao-template>
+</form>

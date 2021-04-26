@@ -1,0 +1,17 @@
+body {
+    background: white !important;
+}
+
+.text-imageLoad {
+    text-align: center;
+}
+
+.text div {
+    font-size: 600%;
+    color: var(--error-border-color);
+}
+
+.text small {
+    font-size: 150%;
+    color: var(--text-color-secondary);
+}
