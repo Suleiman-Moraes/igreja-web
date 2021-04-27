@@ -115,7 +115,7 @@ export class AuthenticationService {
       this.http.delete(this.logoutUrl, { withCredentials: true })
         .toPromise()
         .then(() => {
-          sessionStorage.removeItem('token');
+          sessionStorage.clear();
           this.jwtPayload = null;
         });
     }
