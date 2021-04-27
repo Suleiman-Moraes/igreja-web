@@ -1,0 +1,29 @@
+<form [formGroup]="formulario">
+    <div class="form-row">
+        <app-input-padrao class="form-group col-md-3" for-name="cep" mask="99999-999" nome="CEP"
+            [formulario]="formulario" (blur)="carregarEnderecoCorreio()">
+        </app-input-padrao>
+        <app-input-padrao class="form-group col-md-5" for-name="rua" nome="Rua" [formulario]="formulario">
+        </app-input-padrao>
+        <app-input-padrao class="form-group col-md-2" for-name="quadra" nome="Quadra" [formulario]="formulario">
+        </app-input-padrao>
+        <app-input-padrao class="form-group col-md-2" for-name="lote" nome="Lote" [formulario]="formulario">
+        </app-input-padrao>
+    </div>
+    <div class="form-row">
+        <app-input-padrao class="form-group col-md-4" for-name="bairro" nome="Bairro" [formulario]="formulario">
+        </app-input-padrao>
+        <app-input-padrao class="form-group col-md-2" for-name="numero" nome="Número" [formulario]="formulario">
+        </app-input-padrao>
+        <app-input-padrao class="form-group col-md-3" for-name="cidade" nome="Cidade" [formulario]="formulario">
+        </app-input-padrao>
+        <app-combo-box-padrao class="form-group col-md-3" for-name="id" nome="Estado" [formulario]="estadoForm"
+            [options]="estados" text="nome" value="id">
+        </app-combo-box-padrao>
+    </div>
+    <div class="form-row">
+        <app-input-padrao class="form-group col-md-12" for-name="complemento" nome="Complemento"
+            [formulario]="formulario">
+        </app-input-padrao>
+    </div>
+</form>

@@ -1,4 +1,5 @@
 import { AfterContentChecked, Component, Injector, OnChanges, OnInit, SimpleChanges } from "@angular/core";
+import { FormGroup } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { switchMap } from "rxjs/operators";
 import { BaseResourceService } from "../base-resource-service/base-resource.service";
@@ -9,6 +10,7 @@ import { BaseResourceUtilComponent } from "../base-resource-util/base-resource-u
 })
 export abstract class BaseResourceFormComponent extends BaseResourceUtilComponent implements OnInit, AfterContentChecked, OnChanges {
 
+    formulario: FormGroup;
     currentAction: string;
     pageTitle: string;
     resource: any;
@@ -118,17 +120,12 @@ export abstract class BaseResourceFormComponent extends BaseResourceUtilComponen
     }
 
     protected tratarResponseSubimit(responseApi: any): void {
-        if (responseApi.data != null) {
-            this.resource = responseApi.data;
+        if (responseApi != null) {
+            this.resource = responseApi;
             this.formulario.get('id').setValue(this.resource.id);
             this.beforePatchValue();
             this.posSubmitFormSucesso();
             this.formulario.patchValue(this.resource);
-        }
-        else {
-            responseApi.erros.forEach(x => {
-                this.showError(x);
-            });
         }
     }
 

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { SyncRequestClient } from 'ts-sync-request';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,19 @@ export class UsuarioService {
       map((res: any) => res),
       catchError(this.handleError)
     );
+  }
+
+  getUsuario(): any {
+    if (sessionStorage.getItem('user')) {
+      return JSON.parse(sessionStorage.getItem('user'));
+    }
+    else {
+      const user = new SyncRequestClient()
+        .addHeader('Authorization', `Bearer ${atob(sessionStorage.getItem('token'))}`)
+        .get<any>(`${this.route}/me`);
+      sessionStorage.setItem('user', JSON.stringify(user));
+      return user;
+    }
   }
 
   // PRIVATE METHODS

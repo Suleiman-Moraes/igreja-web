@@ -16,9 +16,14 @@
             <div class="dropdown-menu dropdown-menu-right"
                 style="margin-top: 0px;border-top-width: 1px;padding-top: 0px;" align="center">
                 <app-avatar></app-avatar>
-                <a class="dropdown-item" href="#/pages/pessoa/perfil" style="text-align: center; padding-top: 10px;">
+                <a class="dropdown-item" href="#/pages/pessoa/perfil" style="text-align: center; padding-top: 10px;"
+                    *ngIf="user.login != 'root'">
                     <i class="pi pi-user-edit"></i> Meu Perfil
                 </a>
+                <label class="dropdown-item" style="text-align: center; padding-top: 10px;"
+                    *ngIf="user.login == 'root'">
+                    <i class="pi pi-user-edit"></i> Meu Perfil
+                </label>
                 <button class="dropdown-item" type="button" style="text-align: center;" (click)="changeTheme($event)">
                     <i [class]="!isDark ? 'pi pi-circle-on' : 'pi pi-circle-off'"></i>
                     Ativar modo {{ isDark ? 'Light' : 'Dark' }}</button>
@@ -34,7 +39,7 @@
     </div>
 </nav>
 <p-sidebar [(visible)]="visibleSidebar" [baseZIndex]="10000" [style]="{padding:'0'}"
-    styleClass="p-sidebar-sm p-shadow-11">
+    styleClass="p-sidebar-sm p-shadow-11" *ngIf="getShowTemplate">
     <app-side-bar></app-side-bar>
 
 </p-sidebar>

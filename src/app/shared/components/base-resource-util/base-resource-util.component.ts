@@ -12,7 +12,6 @@ import { HttpErrorResponse } from "@angular/common/http";
 })
 export abstract class BaseResourceUtilComponent {
 
-    formulario: FormGroup;
     @BlockUI() blockUI: NgBlockUI;
 
     protected location: Location;
@@ -22,10 +21,10 @@ export abstract class BaseResourceUtilComponent {
     imaskTelefone = {
         mask: [
             {
-                mask: "0000-0000"
+                mask: "(00) 0000-0000"
             },
             {
-                mask: "0 0000-0000"
+                mask: "(00) 0 0000-0000"
             }
         ]
     }

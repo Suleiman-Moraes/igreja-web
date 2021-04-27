@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng-lts/api';
+import { UsuarioService } from 'src/app/pages/pages-shared/services/usuario.service';
 
 @Component({
   selector: 'app-menu-bar',
@@ -13,14 +14,18 @@ export class MenuBarComponent implements OnInit {
 
   private themeDark: string = 'assets/css/themes/dark/theme.css';
   private themeLight: string = 'assets/css/themes/light/theme.css';
+  user: any = {};
 
   isDark: boolean = false;
 
   items: MenuItem[];
 
-  constructor() { }
+  constructor(
+    private usuarioService: UsuarioService
+  ) { }
 
   ngOnInit(): void {
+    this.user = this.usuarioService.getUsuario();
     let themeLink: HTMLLinkElement = <HTMLLinkElement>document.getElementById('theme-css');
     this.isDark = themeLink.href.indexOf(this.themeDark) >= 0;
     if (sessionStorage.getItem('isDark') && sessionStorage.getItem('isDark') != this.isDark + '') {
@@ -29,20 +34,6 @@ export class MenuBarComponent implements OnInit {
     else {
       sessionStorage.setItem('isDark', this.isDark + '');
     }
-
-    this.items = [
-      {
-        label: 'Edit',
-        icon: 'pi pi-fw pi-pencil'
-      },
-      {
-        separator: true
-      },
-      {
-        label: 'Sair',
-        icon: 'pi pi-fw pi-power-off'
-      }
-    ];
   }
 
   get getShowTemplate(): boolean {

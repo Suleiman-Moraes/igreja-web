@@ -12,8 +12,8 @@ export class LoginComponent extends BaseResourceUtilComponent implements OnInit 
 
   private returnUrl: string;
 
-  usuario: string = 'root';
-  senha: string = '123456';
+  usuario: string = '';
+  senha: string = '';
 
   constructor(
     protected injector: Injector,

@@ -25,6 +25,8 @@ import { CpfCnpjFormatPipe } from './pipes/cpf-cnpj-format.pipe';
 import { MaskDinamicPipe } from './pipes/mask-dinamic.pipe';
 import { ValueBooleanPipe } from './pipes/value-boolean.pipe';
 import { ValueOrTracePipe } from './pipes/value-or-trace.pipe';
+import { CardModule } from 'primeng-lts/card';
+import { PasswordModule } from 'primeng-lts/password';
 
 registerLocaleData(localePt, 'pt');
 
@@ -56,7 +58,9 @@ registerLocaleData(localePt, 'pt');
     InputTextareaModule,
     InputTextModule,
     ButtonModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    CardModule,
+    PasswordModule
   ],
   exports: [
     CommonModule,
@@ -71,6 +75,8 @@ registerLocaleData(localePt, 'pt');
     InputTextModule,
     ButtonModule,
     ConfirmDialogModule,
+    CardModule,
+    PasswordModule,
 
     //Components
     ComboBoxPadraoComponent, 

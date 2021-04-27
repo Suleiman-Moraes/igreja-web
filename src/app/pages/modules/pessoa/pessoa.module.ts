@@ -6,13 +6,21 @@ import { PessoaListComponent } from './components/pessoa-list/pessoa-list.compon
 import { PessoaFormComponent } from './components/pessoa-form/pessoa-form.component';
 import { PessoaPerfilComponent } from './components/pessoa-perfil/pessoa-perfil.component';
 import { PessoaFormRecycleComponent } from './components/pessoa-form-recycle/pessoa-form-recycle.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { EnderecoModule } from '../endereco/endereco.module';
 
 
 @NgModule({
-  declarations: [PessoaListComponent, PessoaFormComponent, PessoaPerfilComponent, PessoaFormRecycleComponent],
+  declarations: [
+    PessoaListComponent, 
+    PessoaFormComponent, 
+    PessoaPerfilComponent, 
+    PessoaFormRecycleComponent
+  ],
   imports: [
-    CommonModule,
-    PessoaRoutingModule
+    SharedModule,
+    PessoaRoutingModule,
+    EnderecoModule
   ]
 })
 export class PessoaModule { }

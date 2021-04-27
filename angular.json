@@ -41,6 +41,7 @@
             "allowedCommonJsDependencies": [
               "string-mask",
               "ts-sync-request/dist",
+              "ts-sync-request",
               "br-validations",
               "jspdf-autotable",
               "jspdf",

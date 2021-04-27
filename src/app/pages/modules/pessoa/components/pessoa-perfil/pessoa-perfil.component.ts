@@ -11,5 +11,4 @@ export class PessoaPerfilComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
