@@ -1,11 +1,8 @@
 import { Location } from "@angular/common";
-import { AfterContentChecked, Component, EventEmitter, Injector, OnChanges, OnInit, SimpleChanges } from "@angular/core";
+import { Component, EventEmitter, Injector } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { ActivatedRoute, Router } from "@angular/router";
 import { BlockUI, NgBlockUI } from "ng-block-ui";
-import { ConfirmationService, MessageService } from "primeng-lts/api";
-import { switchMap } from "rxjs/operators";
-import { BaseResourceService } from "../base-resource-service/base-resource.service";
+import { ConfirmationService } from "primeng-lts/api";
 import toastr from "toastr";
 import { environment } from "src/environments/environment";
 import { HttpErrorResponse } from "@angular/common/http";
@@ -214,7 +211,7 @@ export abstract class BaseResourceUtilComponent {
 
     protected buscar(metodo, atributo: string, func?: any): void {
         metodo.subscribe(res => {
-            this[atributo] = res.data;
+            this[atributo] = res;
             if (func != null) {
                 func();
             }

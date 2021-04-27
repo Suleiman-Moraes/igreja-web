@@ -5,13 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConfirmationService } from 'primeng-lts/api';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BlockUIModule } from 'ng-block-ui';
 import { JwtInterceptor } from './security/jwt.interceptor';
 import { AuthGuard } from './security/auth.guard';
 import { JwtModule } from '@auth0/angular-jwt';
 import { environment } from 'src/environments/environment';
+import { MenuBarComponent } from './components/menu-bar/menu-bar.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { SideBarItemComponent } from './components/side-bar-item/side-bar-item.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng-lts/button';
+import { SidebarModule } from 'primeng-lts/sidebar';
+import { CardModule } from 'primeng-lts/card';
+import { TieredMenuModule } from 'primeng-lts/tieredmenu';
+import { AvatarComponent } from './components/avatar/avatar.component';
 
 export function tokenGetter(): string {
   return atob(sessionStorage.getItem('token'));
@@ -19,10 +28,15 @@ export function tokenGetter(): string {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuBarComponent,
+    SideBarComponent,
+    SideBarItemComponent,
+    AvatarComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
@@ -36,7 +50,13 @@ export function tokenGetter(): string {
         allowedDomains: environment.tokenAllowedDomains,
         disallowedRoutes: environment.tokenDisallowedRoutes
       }
-    })
+    }),
+    FormsModule,
+    ButtonModule,
+    SidebarModule,
+    CardModule,
+    TieredMenuModule,
+    ReactiveFormsModule
   ],
   providers: [
     ConfirmationService,

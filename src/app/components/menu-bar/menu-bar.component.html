@@ -1,0 +1,40 @@
+<nav class="navbar navbar-light font-padrao cards" *ngIf="getShowTemplate">
+    <a class="navbar-brand" href="#/pages">
+        <img src="assets/img/home-cafe.PNG" height="40" class="p-mr-2" loading="lazy">
+    </a>
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a href="#" style="color: var(--text-color);" (click)="openCloseSideBar($event)"><i
+                    class="pi pi-fw pi-bars"></i></a>
+        </li>
+    </ul>
+
+    <div class="my-2 my-lg-0">
+        <div class="btn-group">
+            <button #btn type="button" pButton icon="pi pi-fw pi-user" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false"></button>
+            <div class="dropdown-menu dropdown-menu-right"
+                style="margin-top: 0px;border-top-width: 1px;padding-top: 0px;" align="center">
+                <app-avatar></app-avatar>
+                <button class="dropdown-item" type="button" style="text-align: center; padding-top: 10px;"><i
+                        class="pi pi-user-edit"></i>
+                    Meu Perfil</button>
+                <button class="dropdown-item" type="button" style="text-align: center;" (click)="changeTheme($event)">
+                    <i [class]="!isDark ? 'pi pi-circle-on' : 'pi pi-circle-off'"></i>
+                    Ativar modo {{ isDark ? 'Light' : 'Dark' }}</button>
+                <div class="dropdown-divider"></div>
+                <a href="#/login" class="dropdown-item" style="text-align: center;">
+                    <i class="pi pi-power-off"></i> Sair
+                </a>
+            </div>
+        </div>
+        <!-- <button #btn type="button" pButton icon="pi pi-fw pi-user" (click)="menu.toggle($event)"></button> -->
+        <!-- <p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu> -->
+        <!-- <a href="#/login" class="btn btn-outline-danger my-2 my-sm-0" type="button">Sair</a> -->
+    </div>
+</nav>
+<p-sidebar [(visible)]="visibleSidebar" [baseZIndex]="10000" [style]="{padding:'0'}"
+    styleClass="p-sidebar-sm p-shadow-11">
+    <app-side-bar></app-side-bar>
+
+</p-sidebar>

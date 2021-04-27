@@ -3,7 +3,7 @@
 :root {
     --blue: #1e90ff;
     --white: #ffffff;
-    --font-padrao: Euclid Circular B Light;
+    --font-padrao: Euclid Circular B;
     --font-padrao-b: Euclid Circular B;
 }
 
@@ -15,6 +15,10 @@ body {
 
 .p-paginator-bottom {
     border-width: 1px 1px 1px 1px;
+}
+
+a {
+    font-family: var(--font-padrao);
 }
 
 a:hover, a:focus {
@@ -168,7 +172,7 @@ input {
 }
 
 .cards {
-    background-color: var(--surface-e) !important;
+    background-color: var(--primary-color) !important;
     font-family: var(--font-padrao);
     color: var(--text-color);
     border-color: var(--text-color-secondary);
@@ -203,8 +207,9 @@ tr:hover {
     border-color: var(--error-border-color);
 }
 
-h6 strong, .p-card-title {
+h6 strong, .p-card-title, h6, h5 {
     color: var(--primary-color) !important;
+    font-family: var(--font-padrao);
 }
 
 strong {

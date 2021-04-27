@@ -1,0 +1,13 @@
+.dropdown-menu.dropdown-menu-right {
+    background-color: var(--surface-b);
+}
+
+.dropdown-item:hover {
+    background-color: var(--surface-a) !important;
+    color: var(--text-color-secondary);
+}
+
+.dropdown-item {
+    color: var(--primary-color);
+    font-family: var(--font-padrao);
+}

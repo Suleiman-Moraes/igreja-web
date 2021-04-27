@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 export class AuthenticationService {
 
   oauthTokenUrl: string;
+  logoutUrl: string;
   jwtPayload: any;
 
   constructor(
@@ -16,6 +17,7 @@ export class AuthenticationService {
     private jwtHelper: JwtHelperService
   ) {
     this.oauthTokenUrl = `${environment.API_URL}/oauth/token`;
+    this.logoutUrl = `${environment.API_URL}/tokens/revoke`;
     this.carregarToken();
   }
 
@@ -109,7 +111,14 @@ export class AuthenticationService {
   }
 
   logout(): void {
-    sessionStorage.removeItem('token');
+    if (sessionStorage.getItem('token')) {
+      this.http.delete(this.logoutUrl, { withCredentials: true })
+        .toPromise()
+        .then(() => {
+          sessionStorage.removeItem('token');
+          this.jwtPayload = null;
+        });
+    }
   }
 
   private carregarToken() {

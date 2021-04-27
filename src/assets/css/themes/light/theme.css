@@ -8,10 +8,10 @@
   --surface-f: #ffffff;
   --text-color: #495057;
   --text-color-secondary: #6c757d;
-  --primary-color: #093F21;
+  --primary-color: #4CAF50;
   --primary-color-text: #ffffff;
   --error-border-color: #f44336;
-  --font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  --font-family: Euclid Circular B Light;
 }
 
 * {

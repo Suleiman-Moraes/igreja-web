@@ -15,7 +15,7 @@ export class JwtInterceptor implements HttpInterceptor {
         if (token && token && !request.url.includes('https://viacep.com.br/ws/')) {
             request = request.clone({
                 setHeaders: {
-                    'Authorization': 'Bearer ' + token
+                    'Authorization': 'Bearer ' + atob(token)
                 }
             });
         }
