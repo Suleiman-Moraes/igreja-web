@@ -10,64 +10,39 @@ export class SideBarComponent implements OnInit {
   menus: any[] = [
     {
       id: 1,
-      nome: 'Cadastro',
+      nome: 'Lançamentos',
       icon: 'pi pi-pencil',
       menuPai: null,
       itens: [
         {
-          nome: 'Associados',
-          icon: 'pi pi-user-edit',
-          url: '#/pages/associado'
-        },
-        {
-          nome: 'Colaboradores',
-          icon: 'pi pi-user-edit',
-          url: '#/pages/colaborador'
-        },
-        {
-          nome: 'Empresas Conveniadas',
-          icon: 'pi pi-user-edit',
-          url: '#/pages/empresaconveniada'
-        },
-        {
-          nome: 'Funcionários',
-          icon: 'pi pi-user-edit',
-          url: '#/pages/funcionario'
-        },
-        {
-          nome: 'Médicos Conveniados',
-          icon: 'pi pi-user-edit',
-          url: '#/pages/medicoconveniado'
-        },
-        {
-          nome: 'Agência',
-          icon: 'pi pi-user-edit',
-          url: '#/pages/agencia'
-        },
-        {
-          id: 2,
-          nome: 'Cadastro Filho',
+          nome: 'Saídas',
           icon: 'pi pi-pencil',
-          menuPai: 1
+          url: '#/pages/saida'
+        },
+        {
+          nome: 'Entradas',
+          icon: 'pi pi-pencil',
+          url: '#/pages/colaborador'
         }
       ]
     },
     {
-      nome: 'Controle de Demandas',
-      icon: 'pi pi-user-edit',
-      url: '#/pages/associado',
+      id: 1,
+      nome: 'Gerência',
+      icon: 'pi pi-pencil',
+      menuPai: null,
       itens: [
         {
-          nome: 'Administrar Demandas',
-          icon: 'pi pi-user-edit',
-          url: '#/pages/demanda/adm/1'
+          nome: 'Pessoas',
+          icon: 'pi pi-pencil',
+          url: '#/pages/pessoa'
         }
       ]
-    }
+    },
   ];
 
   constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
 }

@@ -1,0 +1,45 @@
+<p-card>
+    <div class="form-row">
+        <div class="form-group col-md-6 p-card-title">
+            {{ pageTitle }}
+        </div>
+        <div class="form-group col-md-6">
+            <button pButton pRipple type="button" label="Voltar" icon="pi pi-arrow-left" style="float: right;"
+                (click)="back()">
+            </button>
+        </div>
+    </div>
+    <form [formGroup]="formulario" novalidate>
+        <div class="form-row">
+            <app-input-padrao class="form-group col-md-4" for-name="nome" nome="Nome" [formulario]="formulario">
+            </app-input-padrao>
+            <app-input-number-padrao class="form-group col-md-2" for-name="valor" nome="Valor pago"
+                [formulario]="formulario" [money]="true" [use-grouping]="true">
+            </app-input-number-padrao>
+            <app-combo-box-padrao class="form-group col-md-3" for-name="id" nome="Forma de pagamento"
+                [formulario]="formaPagamentoForm" [options]="formaPagamentos" text="nome" value="id">
+            </app-combo-box-padrao>
+            <app-input-date-padrao class="form-group col-md-3" for-name="dataSaida" nome="Data"
+                [formulario]="formulario">
+            </app-input-date-padrao>
+        </div>
+        <div class="form-row">
+            <app-input-area-padrao class="form-group col-md-12" for-name="descricao" nome="Descrição"
+                [formulario]="formulario">
+            </app-input-area-padrao>
+        </div>
+        <div class="form-row" *ngIf="igrejas">
+            <app-combo-box-padrao class="form-group col-md-4" for-name="id" nome="Igreja" [formulario]="igrejaForm"
+                [options]="igrejas" text="nome" value="id">
+            </app-combo-box-padrao>
+        </div>
+    </form>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <div align="center">
+                <button pButton pRipple type="button" label="Salvar" (click)="submitForm()" icon="pi pi-save">
+                </button>
+            </div>
+        </div>
+    </div>
+</p-card>

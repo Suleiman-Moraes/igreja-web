@@ -1,0 +1,96 @@
+<p-card header="Listagem de Saídas">
+    <p-panel [toggleable]="true">
+        <p-header>
+            <div align="left" style="color: var(--primary-color);">
+                <h6>
+                    <strong><i class="pi pi-cog"></i> Filtros</strong>
+                </h6>
+            </div>
+        </p-header>
+        <div class="form-row">
+            <app-input-date-padrao class="form-group col-md-3" for-name="mesAno" nome="Período"
+                [formulario]="filterForm" date-format="mm/yy" view="month">
+            </app-input-date-padrao>
+            <app-combo-box-padrao class="form-group col-md-3" for-name="ativo" nome="Ativo" [formulario]="filterForm"
+                [options]="situacaoOptions" text="text" value="value">
+            </app-combo-box-padrao>
+            <app-combo-box-padrao class="form-group col-md-4" for-name="igrejaId" nome="Igreja"
+                [formulario]="filterForm" [options]="igrejas" text="nome" value="id" *ngIf="igrejas">
+            </app-combo-box-padrao>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <div align="right">
+                    <button pButton pRipple type="button" label="Pesquisar" icon="pi pi-search"
+                        (click)="paginate();"></button>
+                    &nbsp;
+                    <button pButton pRipple type="button" routerLink="/pages/saida/new" label="Novo"
+                        icon="pi pi-plus"></button>
+                    &nbsp;
+                    <button pButton pRipple type="button" label="Limpar filtros" (click)="buildForm(); paginate();"
+                        icon="pi pi-spin pi-spinner"></button>
+                </div>
+            </div>
+        </div>
+    </p-panel>
+    <br>
+    <section id="no-more-tables" style="word-wrap: break-word">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="table-bootstrap-head">
+                        <th>Código</th>
+                        <th>Data</th>
+                        <th>Valor</th>
+                        <th>Nome</th>
+                        <th>Forma de pagamento</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="resources">
+                    <tr class="table-bootstrap-body" *ngFor="let rowData of resources.content">
+                        <td data-title="Código">
+                            {{ rowData.id }}
+                        </td>
+                        <td data-title="Data">
+                            {{ rowData.dataSaida | date :'dd/MM/yyyy' }}
+                        </td>
+                        <td data-title="Valor">
+                            {{ rowData.valor | currency:'BRL':true:'1.2-2' }}
+                        </td>
+                        <td data-title="Nome">
+                            {{ rowData.nome | valueOrTrace }}
+                        </td>
+                        <td data-title="Forma de pagamento">
+                            {{ rowData.formaPagamentoNome | valueOrTrace }}
+                        </td>
+                        <td data-title="Ação">
+                            <button title="Editar" pButton pRipple type="button" icon="fa fa-edit"
+                                class="p-button-rounded" [routerLink]="'/pages/saida/edit/' + rowData.id"
+                                *ngIf="rowData.ativo == 'ATIVO'">
+                            </button>
+                            &nbsp;
+                            <button title="Inativar" pButton pRipple type="button" icon="pi pi-times"
+                                class="p-button-rounded p-button-danger" (click)="ativarOuInativar(rowData.id, false)"
+                                *ngIf="rowData.ativo == 'ATIVO'">
+                            </button>
+                            <button title="Ativar" pButton pRipple type="button" icon="pi pi-check"
+                                class="p-button-rounded p-button-success" (click)="ativarOuInativar(rowData.id, true)"
+                                *ngIf="rowData.ativo == 'INATIVO'">
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p-paginator
+                *ngIf="resources && resources.totalElements != 0 && filterForm.value.size <= resources.totalElements"
+                [rows]="filterForm.value.size"
+                [style]="{'background-color': 'var(--surface-e)', 'border': '1px solid var(--surface-e)'}"
+                [totalRecords]="(resources ? resources.totalElements : 0)"
+                [rowsPerPageOptions]="[5, 10, 20, 30, 50, 100]" (onPageChange)="paginate($event)">
+            </p-paginator>
+            <div *ngIf="!resources || resources.totalElements == 0">Nehum registro encontrado</div>
+        </div>
+    </section>
+</p-card>
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>

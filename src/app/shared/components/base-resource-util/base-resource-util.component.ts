@@ -6,6 +6,7 @@ import { ConfirmationService } from "primeng-lts/api";
 import toastr from "toastr";
 import { environment } from "src/environments/environment";
 import { HttpErrorResponse } from "@angular/common/http";
+import { AuthenticationService } from "../../services/authentication.service";
 
 @Component({
     template: ''
@@ -17,6 +18,7 @@ export abstract class BaseResourceUtilComponent {
     protected location: Location;
     protected formBuilder: FormBuilder;
     protected confirmationService: ConfirmationService;
+    protected authenticationService: AuthenticationService;
 
     imaskTelefone = {
         mask: [
@@ -35,11 +37,12 @@ export abstract class BaseResourceUtilComponent {
         this.location = this.injector.get(Location);
         this.formBuilder = this.injector.get(FormBuilder);
         this.confirmationService = this.injector.get(ConfirmationService);
+        this.authenticationService = this.injector.get(AuthenticationService);
     }
 
     situacoes = {
-        A: 'Ativo',
-        I: 'Inativo'
+        ATIVO: 'Ativo',
+        INATIVO: 'Inativo'
     };
 
     simNaoEnum = {
@@ -99,6 +102,10 @@ export abstract class BaseResourceUtilComponent {
         });
     }
 
+    temPermissao(role): boolean {
+        return this.authenticationService.temPermissao(role);
+    }
+
     //PRIVATES METHODS
     protected tratarErro(err): void {
         if (typeof err === 'string') {
@@ -116,7 +123,9 @@ export abstract class BaseResourceUtilComponent {
             }
             else {
                 try {
-                    this.showError(err.error[0].mensagemUsuario);
+                    if (err.error.length > 0) {
+                        err.error.forEach(er => this.showError(er.mensagemUsuario));
+                    }
                 } catch (e) { }
             }
         }

@@ -1,9 +1,10 @@
 <form [formGroup]="formulario">
     <app-input-padrao-template [for-name]="forName" [nome]="nome" [formulario]="formulario">
-        <p-calendar [formControlName]="forName" [style]="{'width':'100%'}" dateFormat="dd/mm/yy" [locale]="ptBR"
+        <p-calendar [formControlName]="forName" [style]="{'width':'100%'}" [dateFormat]="dateFormat" [locale]="ptBR"
             [showButtonBar]="true" [title]="nome" [maxDate]="maxDate" [minDate]="minDate" [placeholder]="nome"
             onkeypress="return data(event);" rPCalendarMask [touchUI]="(touchUI || touch)" [showOnFocus]="showOnFocus"
-            [monthNavigator]="true" [yearNavigator]="true" [yearRange]="yearRange" [showIcon]="true">
+            [monthNavigator]="true" [yearNavigator]="true" [yearRange]="yearRange" [showIcon]="true" [view]="view"
+            [readonlyInput]="readonlyInput">
         </p-calendar>
     </app-input-padrao-template>
 </form>

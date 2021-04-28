@@ -27,7 +27,7 @@ export class AuthGuard implements CanActivate {
 
         if (!this.authenticationService.isAccessTokenInvalido()) {
             if (route.data.roles) {
-                if (!this.authenticationService.temQualquerPermissao(route.data.roles)) {
+                if (this.authenticationService.temQualquerPermissao(route.data.roles)) {
                     return true;
                 }
                 this.router.navigate(['/404']);

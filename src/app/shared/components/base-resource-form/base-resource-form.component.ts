@@ -31,6 +31,10 @@ export abstract class BaseResourceFormComponent extends BaseResourceUtilComponen
         this.router = this.injector.get(Router);
     }
 
+    get possuiId(): boolean {
+        return this.resource && this.resource.id && this.resource.id > 0;
+    }
+
     ngOnInit(): void {
         this.setCurrentAction();
         this.initForm();

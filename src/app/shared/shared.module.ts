@@ -27,6 +27,7 @@ import { ValueBooleanPipe } from './pipes/value-boolean.pipe';
 import { ValueOrTracePipe } from './pipes/value-or-trace.pipe';
 import { CardModule } from 'primeng-lts/card';
 import { PasswordModule } from 'primeng-lts/password';
+import { PanelModule } from 'primeng-lts/panel';
 
 registerLocaleData(localePt, 'pt');
 
@@ -60,7 +61,8 @@ registerLocaleData(localePt, 'pt');
     ButtonModule,
     ConfirmDialogModule,
     CardModule,
-    PasswordModule
+    PasswordModule,
+    PanelModule
   ],
   exports: [
     CommonModule,
@@ -77,6 +79,7 @@ registerLocaleData(localePt, 'pt');
     ConfirmDialogModule,
     CardModule,
     PasswordModule,
+    PanelModule,
 
     //Components
     ComboBoxPadraoComponent, 

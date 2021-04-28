@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { SaidaRoutingModule } from './saida-routing.module';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { SaidaListComponent } from './components/saida-list/saida-list.component';
+import { SaidaFormComponent } from './components/saida-form/saida-form.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  SaidaListComponent,
+  SaidaFormComponent
+],
   imports: [
-    CommonModule,
+    SharedModule,
     SaidaRoutingModule
   ]
 })

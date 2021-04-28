@@ -16,6 +16,9 @@ export class InputDatePadraoComponent implements OnInit {
   @Input('formulario') formulario: FormGroup;
   @Input('year-range-max') yearRangeMax: string = null;
   @Input('year-range-min') yearRangeMin: string = null;
+  @Input('readonly-ynput') readonlyInput: boolean = false;
+  @Input('date-format') dateFormat: string = 'dd/mm/yy';
+  @Input() view: string = 'date';
   @Input() touch: boolean = false;
 
   yearRange: string = null;

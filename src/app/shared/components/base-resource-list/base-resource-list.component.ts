@@ -83,7 +83,7 @@ export abstract class BaseResourceListComponent extends BaseResourceUtilComponen
 
     protected tratarResponseApi(responseApi: any): void {
         if (responseApi != null) {
-            this.resources = responseApi.data;
+            this.resources = responseApi;
             if (this.resources.totalElements == 0) {
                 this.showWarning('Nenhum Registro Encontrado.');
             }
@@ -109,12 +109,7 @@ export abstract class BaseResourceListComponent extends BaseResourceUtilComponen
         metodo.subscribe(
             responseApi => {
                 this.blockUI.stop();
-                if (responseApi.data == null) {
-                    responseApi.erros.forEach(x => {
-                        this.showError(x);
-                    });
-                }
-                else {
+                if (responseApi != null) {
                     this.showSuccess('Registro atualizado com Sucesso.');
                     this.paginate();
                 }
