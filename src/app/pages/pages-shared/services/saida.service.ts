@@ -21,6 +21,13 @@ export class SaidaService extends BaseResourceService {
     );
   }
 
+  getInformacao(filterForm: any): Observable<any> {
+    return this.http.post(`${this.route}/info`, filterForm).pipe(
+      map((res: any) => res),
+      catchError(this.handleError)
+    );
+  }
+
   ativar(id): Observable<any> {
     return this.http.put(`${this.apiPath}/ativar/${id}`, null).pipe(
       map((res: any) => res),

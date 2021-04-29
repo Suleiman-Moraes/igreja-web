@@ -1,4 +1,51 @@
 <p-card header="Listagem de Saídas">
+    <p-panel [toggleable]="true" *ngIf="informacao">
+        <p-header>
+            <div align="left" style="color: var(--primary-color);">
+                <h6>
+                    <strong><i class="pi pi-info-circle"></i> Informações</strong>
+                </h6>
+            </div>
+        </p-header>
+        <div class="form-row">
+            <!-- Coluna 1 -->
+            <div class="form-group col-md-6">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <strong>Período:</strong>
+                    </div>
+                    <div class="form-group col-md-8">
+                        {{ informacao.filtro && informacao.filtro.mesAno ? (informacao.filtro.mesAno | date : "MMMM 'de'
+                        yyyy").capitalize() : 'Não informado' }}
+                    </div>
+                    <div class="form-group col-md-4">
+                        <strong>Total de registros:</strong>
+                    </div>
+                    <div class="form-group col-md-8">
+                        {{ informacao.totalRegistros }}
+                    </div>
+                </div>
+            </div>
+            <!-- Coluna 2 -->
+            <div class="form-group col-md-6">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <strong>Valor total:</strong>
+                    </div>
+                    <div class="form-group col-md-8">
+                        {{ informacao.valorTotal | currency:'BRL':true:'1.2-2' }}
+                    </div>
+                    <div class="form-group col-md-4">
+                        <strong>Média por registro:</strong>
+                    </div>
+                    <div class="form-group col-md-8">
+                        {{ informacao.media | currency:'BRL':true:'1.2-2' }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p-panel>
+    <br>
     <p-panel [toggleable]="true">
         <p-header>
             <div align="left" style="color: var(--primary-color);">
@@ -11,9 +58,9 @@
             <app-input-date-padrao class="form-group col-md-3" for-name="mesAno" nome="Período"
                 [formulario]="filterForm" date-format="mm/yy" view="month">
             </app-input-date-padrao>
-            <app-combo-box-padrao class="form-group col-md-3" for-name="ativo" nome="Ativo" [formulario]="filterForm"
+            <!-- <app-combo-box-padrao class="form-group col-md-3" for-name="ativo" nome="Ativo" [formulario]="filterForm"
                 [options]="situacaoOptions" text="text" value="value">
-            </app-combo-box-padrao>
+            </app-combo-box-padrao> -->
             <app-combo-box-padrao class="form-group col-md-4" for-name="igrejaId" nome="Igreja"
                 [formulario]="filterForm" [options]="igrejas" text="nome" value="id" *ngIf="igrejas">
             </app-combo-box-padrao>

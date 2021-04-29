@@ -8,9 +8,9 @@ import { PessoaPerfilComponent } from './components/pessoa-perfil/pessoa-perfil.
 
 const routes: Routes = [
   { path: 'perfil', component: PessoaPerfilComponent, canActivate: [AuthGuard] },
-  { path: '', component: PessoaListComponent, canActivate: [AuthGuard], data: { roles: [Role.ROLE_ADMIN] } },
-  { path: 'new', component: PessoaFormComponent, canActivate: [AuthGuard], data: { roles: [Role.ROLE_ADMIN] } },
-  { path: 'edit/:id', component: PessoaFormComponent, canActivate: [AuthGuard], data: { roles: [Role.ROLE_ADMIN] } }
+  { path: '', component: PessoaListComponent, canActivate: [AuthGuard], data: { roles: [Role.ROLE_PESSOA] } },
+  { path: 'new', component: PessoaFormComponent, canActivate: [AuthGuard], data: { roles: [Role.ROLE_PESSOA] } },
+  { path: 'edit/:id', component: PessoaFormComponent, canActivate: [AuthGuard], data: { roles: [Role.ROLE_PESSOA] } }
 ];
 
 @NgModule({

@@ -1,5 +1,6 @@
 export enum Role {
     ROLE_ADMIN = 'ROLE_ADMIN',
     ROLE_ROOT = 'ROLE_ROOT',
+    ROLE_PESSOA = 'ROLE_PESSOA',
     ROLE_TESOUREIRO = 'ROLE_TESOUREIRO'
 }

@@ -22,7 +22,7 @@ export class SideBarComponent implements OnInit {
         {
           nome: 'Entradas',
           icon: 'pi pi-pencil',
-          url: '#/pages/colaborador'
+          url: '#/pages/entrada'
         }
       ]
     },

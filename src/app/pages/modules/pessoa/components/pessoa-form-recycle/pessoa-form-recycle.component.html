@@ -33,6 +33,14 @@
                 [formulario]="formulario">
             </app-input-padrao>
         </div>
+        <div class="form-row">
+            <app-combo-box-padrao class="form-group col-md-4" for-name="id" nome="Cargo" [formulario]="cargoForm"
+                [options]="cargos" text="nome" value="id" *ngIf="cargos">
+            </app-combo-box-padrao>
+            <app-combo-box-padrao class="form-group col-md-4" for-name="id" nome="Igreja" [formulario]="igrejaForm"
+                [options]="igrejas" text="nome" value="id" *ngIf="igrejas">
+            </app-combo-box-padrao>
+        </div>
     </form>
 </p-card>
 <br>

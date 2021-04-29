@@ -93,15 +93,13 @@ input {
 
 .table-bootstrap-head {
     color: var(--text-color);
-    font-size: 12px;
-    font-weight: bold;
-    font-family: var(--font-padrao-b), 'Helvetica Neue', sans-serif;
+    font-family: var(--font-padrao-b);
 }
 
 .table-bootstrap-body {
     color: var(--text-color);
     font-size: 14px;
-    font-family: var(--font-padrao-b), 'Helvetica Neue', sans-serif;
+    font-family: var(--font-padrao-b);
 }
 
 :host ::ng-deep button {
@@ -214,7 +212,7 @@ h6 strong, .p-card-title, h6, h5 {
 
 strong {
     font-family: var(--font-padrao) !important;
-    color: var(--primary-color) !important;
+    /* color: var(--primary-color) !important; */
 }
 
 p {

@@ -13,6 +13,13 @@ export class SaidaListComponent extends BaseResourceListComponent {
 
   igrejas: any[];
 
+  informacao: any = {
+    mesAno: new Date(),
+    totalRegistros: 2,
+    valorTotal: 500,
+    media: 250
+  };
+
   constructor(
     protected service: SaidaService,
     protected injector: Injector,
@@ -45,6 +52,7 @@ export class SaidaListComponent extends BaseResourceListComponent {
       this.service.findByParams(this.filterForm.value).subscribe(
         responseApi => {
           this.tratarResponseApi(responseApi);
+          this.buscar(this.service.getInformacao(this.filterForm.value), 'informacao');
         }, err => {
           this.tratarErro(err);
         }

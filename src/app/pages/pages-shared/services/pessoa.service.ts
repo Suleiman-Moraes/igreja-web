@@ -24,4 +24,18 @@ export class PessoaService extends BaseResourceService {
   findByIdMe(): Observable<any> {
     return this.getUtil(`${this.route}/me/id`);
   }
+
+  findByParams(filterForm: any): Observable<any> {
+    return this.http.post(`${this.route}/params`, filterForm).pipe(
+      map((res: any) => res),
+      catchError(this.handleError)
+    );
+  }
+
+  ativar(id): Observable<any> {
+    return this.http.put(`${this.apiPath}/ativar/${id}`, null).pipe(
+      map((res: any) => res),
+      catchError(this.handleError)
+    );
+  }
 }

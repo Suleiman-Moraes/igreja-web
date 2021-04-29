@@ -28,6 +28,8 @@ import { ValueOrTracePipe } from './pipes/value-or-trace.pipe';
 import { CardModule } from 'primeng-lts/card';
 import { PasswordModule } from 'primeng-lts/password';
 import { PanelModule } from 'primeng-lts/panel';
+import { TelefoneMaskPipe } from './pipes/telefone-mask.pipe';
+import { PaginatorModule } from 'primeng-lts/paginator';
 
 registerLocaleData(localePt, 'pt');
 
@@ -45,7 +47,8 @@ registerLocaleData(localePt, 'pt');
     CpfCnpjFormatPipe, 
     MaskDinamicPipe, 
     ValueBooleanPipe, 
-    ValueOrTracePipe
+    ValueOrTracePipe, 
+    TelefoneMaskPipe
   ],
   imports: [
     CommonModule,
@@ -62,7 +65,8 @@ registerLocaleData(localePt, 'pt');
     ConfirmDialogModule,
     CardModule,
     PasswordModule,
-    PanelModule
+    PanelModule,
+    PaginatorModule
   ],
   exports: [
     CommonModule,
@@ -80,6 +84,7 @@ registerLocaleData(localePt, 'pt');
     CardModule,
     PasswordModule,
     PanelModule,
+    PaginatorModule,
 
     //Components
     ComboBoxPadraoComponent, 
@@ -96,6 +101,7 @@ registerLocaleData(localePt, 'pt');
     MaskDinamicPipe, 
     ValueBooleanPipe, 
     ValueOrTracePipe,
+    TelefoneMaskPipe,
 
     //Directives
     PrimeNgCalendarMaskDirective

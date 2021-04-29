@@ -1,20 +1,53 @@
 <p-card header="Listagem de Pessoas">
-    <div class="form-row">
-        <div class="form-group col-md-12">
-            <div align="right">
-                <button pButton pRipple type="button" routerLink="/pages/pessoa/new" label="Novo"
-                    icon="pi pi-plus"></button>
+    <p-panel [toggleable]="true">
+        <p-header>
+            <div align="left" style="color: var(--primary-color);">
+                <h6>
+                    <strong><i class="pi pi-cog"></i> Filtros</strong>
+                </h6>
+            </div>
+        </p-header>
+        <div class="form-row">
+            <app-input-padrao class="form-group col-md-3" for-name="login" nome="Login" [formulario]="filterForm">
+            </app-input-padrao>
+            <app-input-padrao class="form-group col-md-3" for-name="nome" nome="Nome" [formulario]="filterForm">
+            </app-input-padrao>
+            <app-input-padrao class="form-group col-md-3" for-name="cpf" nome="CPF" mask="999.999.999-99"
+                [formulario]="filterForm">
+            </app-input-padrao>
+            <app-combo-box-padrao class="form-group col-md-3" for-name="cargoId" nome="Cargo" [formulario]="filterForm"
+                [options]="cargos" text="nome" value="id">
+            </app-combo-box-padrao>
+            <app-combo-box-padrao class="form-group col-md-4" for-name="igrejaId" nome="Igreja"
+                [formulario]="filterForm" [options]="igrejas" text="nome" value="id" *ngIf="igrejas">
+            </app-combo-box-padrao>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <div align="right">
+                    <button pButton pRipple type="button" label="Pesquisar" icon="pi pi-search"
+                        (click)="paginate();"></button>
+                    &nbsp;
+                    <button pButton pRipple type="button" routerLink="/pages/pessoa/new" label="Novo"
+                        icon="pi pi-plus"></button>
+                    &nbsp;
+                    <button pButton pRipple type="button" label="Limpar filtros" (click)="buildForm(); paginate();"
+                        icon="pi pi-spin pi-spinner"></button>
+                </div>
             </div>
         </div>
-    </div>
+    </p-panel>
+    <br>
     <section id="no-more-tables" style="word-wrap: break-word">
         <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
                     <tr class="table-bootstrap-head">
                         <th>Código</th>
-                        <th>Descrição</th>
-                        <th>Nome Científico</th>
+                        <th>Nome</th>
+                        <th>Login</th>
+                        <th>Telefone</th>
+                        <th>Cargo</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -23,16 +56,36 @@
                         <td data-title="Código">
                             {{ rowData.id }}
                         </td>
-                        <td data-title="Descrição">
-                            {{ rowData.descricao | valueOrTrace }}
+                        <td data-title="Nome">
+                            {{ rowData.nome | valueOrTrace }}
                         </td>
-                        <td data-title="Nome Científico">
-                            {{ rowData.nomeCientifico | valueOrTrace }}
+                        <td data-title="Login">
+                            {{ rowData.login | valueOrTrace }}
+                        </td>
+                        <td data-title="Telefone">
+                            {{ rowData.telefone | telefoneMask }}
+                        </td>
+                        <td data-title="Cargo">
+                            {{ rowData.cargoNome | valueOrTrace }}
                         </td>
                         <td data-title="Ação">
                             <button title="Editar" pButton pRipple type="button" icon="fa fa-edit"
-                                class="p-button-rounded p-button-warning"
-                                [routerLink]="'/pages/pessoa/edit/' + rowData.id">
+                                class="p-button-rounded" [routerLink]="'/pages/pessoa/edit/' + rowData.id"
+                                *ngIf="rowData.ativo == 'ATIVO'">
+                            </button>
+                            &nbsp;
+                            <button title="Resetar senha" pButton pRipple type="button" icon="pi pi-spin pi-spinner"
+                                class="p-button-rounded p-button-warning" (click)="resetarSenha(rowData)"
+                                *ngIf="rowData.ativo == 'ATIVO'">
+                            </button>
+                            &nbsp;
+                            <button title="Inativar" pButton pRipple type="button" icon="pi pi-times"
+                                class="p-button-rounded p-button-danger" (click)="ativarOuInativar(rowData.id, false)"
+                                *ngIf="rowData.ativo == 'ATIVO' && temPermissao('ROLE_PESSOA')">
+                            </button>
+                            <button title="Ativar" pButton pRipple type="button" icon="pi pi-check"
+                                class="p-button-rounded p-button-success" (click)="ativarOuInativar(rowData.id, true)"
+                                *ngIf="rowData.ativo == 'INATIVO' && temPermissao('ROLE_PESSOA')">
                             </button>
                         </td>
                     </tr>
@@ -48,4 +101,12 @@
             <div *ngIf="!resources || resources.totalElements == 0">Nehum registro encontrado</div>
         </div>
     </section>
+    <div class="form-row" *ngIf="resources">
+        <div class="form-group col-md-12">
+            <div align="right">
+                <strong>Total:</strong> {{ resources.totalElements }}
+            </div>
+        </div>
+    </div>
 </p-card>
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>

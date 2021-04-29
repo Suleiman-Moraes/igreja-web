@@ -1,8 +1,11 @@
 import { Component, Injector, Input, OnInit, SimpleChanges } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
+import { CargoService } from 'src/app/pages/pages-shared/services/cargo.service';
 import { EstadoService } from 'src/app/pages/pages-shared/services/estado.service';
+import { IgrejaService } from 'src/app/pages/pages-shared/services/igreja.service';
 import { PessoaService } from 'src/app/pages/pages-shared/services/pessoa.service';
 import { BaseResourceFormComponent } from 'src/app/shared/components/base-resource-form/base-resource-form.component';
+import { Role } from 'src/app/shared/enums/role.enum';
 
 @Component({
   selector: 'app-pessoa-form-recycle',
@@ -22,11 +25,15 @@ export class PessoaFormRecycleComponent extends BaseResourceFormComponent {
   usuarioForm: FormGroup;
 
   estados: any[];
+  igrejas: any[];
+  cargos: any[];
 
   constructor(
     protected injector: Injector,
     protected service: PessoaService,
-    private estadoService: EstadoService
+    private estadoService: EstadoService,
+    private cargoService: CargoService,
+    private igrejaService: IgrejaService
   ) {
     super(injector, service);
   }
@@ -125,6 +132,12 @@ export class PessoaFormRecycleComponent extends BaseResourceFormComponent {
 
   protected posNgOnInit(): void {
     this.buscar(this.estadoService.getAll(), 'estados');
+    if (this.temPermissao(Role.ROLE_ADMIN)) {
+      this.buscar(this.cargoService.getAll(), 'cargos');
+    }
+    if (this.temPermissao(Role.ROLE_ROOT)) {
+      this.buscar(this.igrejaService.getAll(), 'igrejas');
+    }
   }
 
   protected beforePatchValue(): void {
@@ -145,6 +158,18 @@ export class PessoaFormRecycleComponent extends BaseResourceFormComponent {
           this.posLoadResource();
         }
       );
+    }
+  }
+
+  protected setCurrentAction() {
+    if (this.route.snapshot.url[0].path == "new") {
+      this.currentAction = "new";
+    }
+    else {
+      this.currentAction = "edit";
+      if(this.route.snapshot.params.id){
+        this.id = this.route.snapshot.params.id;
+      }
     }
   }
 }

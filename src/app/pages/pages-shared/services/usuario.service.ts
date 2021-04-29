@@ -23,6 +23,13 @@ export class UsuarioService {
     );
   }
 
+  reset(id): Observable<any> {
+    return this.http.put<any>(`${this.route}/reset/${id}`, null).pipe(
+      map((res: any) => res),
+      catchError(this.handleError)
+    );
+  }
+
   getUsuario(): any {
     if (sessionStorage.getItem('user')) {
       return JSON.parse(sessionStorage.getItem('user'));
