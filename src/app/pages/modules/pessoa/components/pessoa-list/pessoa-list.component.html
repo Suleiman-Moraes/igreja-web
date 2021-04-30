@@ -48,7 +48,9 @@
                         <th>Login</th>
                         <th>Telefone</th>
                         <th>Cargo</th>
-                        <th>Ações</th>
+                        <th>
+                            <div align="center">Ações</div>
+                        </th>
                     </tr>
                 </thead>
                 <tbody *ngIf="resources">
@@ -69,24 +71,33 @@
                             {{ rowData.cargoNome | valueOrTrace }}
                         </td>
                         <td data-title="Ação">
-                            <button title="Editar" pButton pRipple type="button" icon="fa fa-edit"
-                                class="p-button-rounded" [routerLink]="'/pages/pessoa/edit/' + rowData.id"
-                                *ngIf="rowData.ativo == 'ATIVO'">
-                            </button>
-                            &nbsp;
-                            <button title="Resetar senha" pButton pRipple type="button" icon="pi pi-spin pi-spinner"
-                                class="p-button-rounded p-button-warning" (click)="resetarSenha(rowData)"
-                                *ngIf="rowData.ativo == 'ATIVO'">
-                            </button>
-                            &nbsp;
-                            <button title="Inativar" pButton pRipple type="button" icon="pi pi-times"
-                                class="p-button-rounded p-button-danger" (click)="ativarOuInativar(rowData.id, false)"
-                                *ngIf="rowData.ativo == 'ATIVO' && temPermissao('ROLE_PESSOA')">
-                            </button>
-                            <button title="Ativar" pButton pRipple type="button" icon="pi pi-check"
-                                class="p-button-rounded p-button-success" (click)="ativarOuInativar(rowData.id, true)"
-                                *ngIf="rowData.ativo == 'INATIVO' && temPermissao('ROLE_PESSOA')">
-                            </button>
+                            <div align="center">
+                                <button title="Editar" pButton pRipple type="button" icon="fa fa-edit"
+                                    class="p-button-rounded" [routerLink]="'/pages/pessoa/edit/' + rowData.id"
+                                    *ngIf="rowData.ativo == 'ATIVO'">
+                                </button>
+                                &nbsp;
+                                <button title="Resetar senha" pButton pRipple type="button" icon="pi pi-spin pi-spinner"
+                                    class="p-button-rounded p-button-warning" (click)="resetarSenha(rowData)"
+                                    *ngIf="rowData.ativo == 'ATIVO'">
+                                </button>
+                                &nbsp;
+                                <button title="Lançar Entrada" pButton pRipple type="button" icon="pi pi-money-bill"
+                                    class="p-button-rounded p-button-success" routerLink="/pages/entrada/new"
+                                    [queryParams]="{pessoaId: rowData.id}" *ngIf="rowData.ativo == 'ATIVO'">
+                                </button>
+                                &nbsp;
+                                <button title="Inativar" pButton pRipple type="button" icon="pi pi-times"
+                                    class="p-button-rounded p-button-danger"
+                                    (click)="ativarOuInativar(rowData.id, false)"
+                                    *ngIf="rowData.ativo == 'ATIVO' && temPermissao('ROLE_PESSOA')">
+                                </button>
+                                <button title="Ativar" pButton pRipple type="button" icon="pi pi-check"
+                                    class="p-button-rounded p-button-success"
+                                    (click)="ativarOuInativar(rowData.id, true)"
+                                    *ngIf="rowData.ativo == 'INATIVO' && temPermissao('ROLE_PESSOA')">
+                                </button>
+                            </div>
                         </td>
                     </tr>
                 </tbody>

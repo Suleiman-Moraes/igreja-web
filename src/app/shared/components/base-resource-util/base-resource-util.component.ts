@@ -132,6 +132,7 @@ export abstract class BaseResourceUtilComponent {
         else {
             this.erroServidor();
         }
+        console.log(err);
         console.error('Ocorreu um erro', err);
         this.posTratarErro();
     }

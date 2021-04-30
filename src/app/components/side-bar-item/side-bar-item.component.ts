@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SideBarService } from 'src/app/shared/services/side-bar.service';
 
 @Component({
   selector: 'app-side-bar-item',
@@ -15,7 +16,8 @@ export class SideBarItemComponent implements OnInit {
   itenSemFilhos: any[];
 
   constructor(
-    private router: Router
+    private router: Router,
+    private sideBarService: SideBarService
   ) { }
 
   ngOnInit(): void {
@@ -25,6 +27,7 @@ export class SideBarItemComponent implements OnInit {
   }
 
   navegar(url: string, event?: Event): void {
+    this.sideBarService.sendData({ close: true });
     this.router.navigate([url.replace('#', '')]);
   }
 

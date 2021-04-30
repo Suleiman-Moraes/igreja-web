@@ -7,31 +7,22 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class PessoaService extends BaseResourceService {
-  private route: string = `${environment.API_URL}/api/pessoa`;
+export class EntradaService extends BaseResourceService {
+  private route: string = `${environment.API_URL}/api/entrada`;
 
   constructor(protected injector: Injector) {
-    super(`${environment.API_URL}/api/pessoa`, injector);
+    super(`${environment.API_URL}/api/entrada`, injector);
   }
 
-  updateMe(resource: any): Observable<any> {
-    return this.http.put(`${this.route}/me`, resource).pipe(
+  findByParams(filterForm: any): Observable<any> {
+    return this.http.post(`${this.route}/params`, filterForm).pipe(
       map((res: any) => res),
       catchError(this.handleError)
     );
   }
 
-  findByIdMe(): Observable<any> {
-    return this.getUtil(`${this.route}/me/id`);
-  }
-
-  findByIgrejaIdAndAtivo(igrejaId): Observable<any> {
-    igrejaId = igrejaId == null ? 0 : igrejaId;
-    return this.getUtil(`${this.route}/igreja/${igrejaId}`);
-  }
-
-  findByParams(filterForm: any): Observable<any> {
-    return this.http.post(`${this.route}/params`, filterForm).pipe(
+  getInformacao(filterForm: any): Observable<any> {
+    return this.http.post(`${this.route}/info`, filterForm).pipe(
       map((res: any) => res),
       catchError(this.handleError)
     );

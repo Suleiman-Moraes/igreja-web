@@ -21,21 +21,23 @@ export class AuthGuard implements CanActivate {
                     this.router.navigate(['/login']);
                     return false;
                 }
-                return true;
+                else{
+                    return this.verificar(route);
+                }
             });
         }
+        else {
+            return this.verificar(route);
+        }
+    }
 
-        if (!this.authenticationService.isAccessTokenInvalido()) {
-            if (route.data.roles) {
-                if (this.authenticationService.temQualquerPermissao(route.data.roles)) {
-                    return true;
-                }
-                this.router.navigate(['/404']);
-                return false;
-            }
+    private verificar(route: ActivatedRouteSnapshot): boolean{
+        if (route.data.roles && !this.authenticationService.temQualquerPermissao(route.data.roles)) {
+            this.router.navigate(['/pages/404']);
+            return false;
+        }
+        else {
             return true;
         }
-        this.router.navigate(['/login']);
-        return false;
     }
 }

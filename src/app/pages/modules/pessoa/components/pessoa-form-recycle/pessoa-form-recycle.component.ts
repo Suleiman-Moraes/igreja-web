@@ -111,6 +111,7 @@ export class PessoaFormRecycleComponent extends BaseResourceFormComponent {
   protected posSubmitFormSucesso(): void {
     if (this.currentAction == 'new') {
       this.showSuccess('Pessoa incluída com sucesso!');
+      this.back();
     }
     else {
       if (this.me) {
@@ -118,6 +119,7 @@ export class PessoaFormRecycleComponent extends BaseResourceFormComponent {
       }
       else {
         this.showSuccess('Pessoa atualizada com sucesso!');
+        this.back();
       }
     }
   }

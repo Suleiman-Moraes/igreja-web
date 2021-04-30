@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthenticationService {
 
+  public static timeRenovacao = null;
   oauthTokenUrl: string;
   logoutUrl: string;
   jwtPayload: any;
@@ -72,11 +73,23 @@ export class AuthenticationService {
 
   isAccessTokenInvalido() {
     const token = this.getToken();
-
     return !token || this.jwtHelper.isTokenExpired(token);
   }
 
+  agendarRenovacao(): void {
+    // if (!this.isAccessTokenInvalido()) {
+    //   const token = this.getToken();
+    //   const tempo = this.jwtHelper.getTokenExpirationDate(token).getTime() - new Date().getTime();
+    //   console.log(`Renovação agendada + ${(tempo && tempo > 120000 ? tempo - 120000 : tempo)}`);
+    //   clearTimeout(AuthenticationService.timeRenovacao);
+    //   AuthenticationService.timeRenovacao = setTimeout(() => {
+    //     this.obterNovoAccessToken();
+    //   }, (tempo && tempo > 120000 ? tempo - 120000 : tempo));
+    // }
+  }
+
   limparAccessToken() {
+    // clearTimeout(AuthenticationService.timeRenovacao);
     sessionStorage.removeItem('token');
     this.jwtPayload = null;
   }
@@ -97,6 +110,7 @@ export class AuthenticationService {
   private armazenarToken(token: string) {
     this.jwtPayload = this.jwtHelper.decodeToken(token);
     sessionStorage.setItem('token', btoa(token));
+    this.agendarRenovacao();
   }
 
   getToken(): any {
@@ -116,6 +130,9 @@ export class AuthenticationService {
         .then(() => {
           sessionStorage.clear();
           this.jwtPayload = null;
+        }).catch(response => {
+          sessionStorage.clear();
+          return Promise.resolve(null);
         });
     }
   }

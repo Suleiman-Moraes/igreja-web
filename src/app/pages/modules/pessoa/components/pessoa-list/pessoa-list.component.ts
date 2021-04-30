@@ -53,6 +53,10 @@ export class PessoaListComponent extends BaseResourceListComponent {
     }, () => { });
   }
 
+  getIdCrip(id): string {
+    return btoa(id);
+  }
+
   //PRIVATE METHODS
   protected findByPararamsFilter(): void {
     this.blockUI.start();

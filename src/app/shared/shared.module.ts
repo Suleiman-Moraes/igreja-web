@@ -35,19 +35,19 @@ registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [
-    ComboBoxPadraoComponent, 
-    FormFieldErrorComponent, 
-    InputAreaPadraoComponent, 
-    InputDatePadraoComponent, 
-    InputDisabledComponent, 
-    InputNumberPadraoComponent, 
-    InputPadraoComponent, 
-    InputPadraoTemplateComponent, 
-    PrimeNgCalendarMaskDirective, 
-    CpfCnpjFormatPipe, 
-    MaskDinamicPipe, 
-    ValueBooleanPipe, 
-    ValueOrTracePipe, 
+    ComboBoxPadraoComponent,
+    FormFieldErrorComponent,
+    InputAreaPadraoComponent,
+    InputDatePadraoComponent,
+    InputDisabledComponent,
+    InputNumberPadraoComponent,
+    InputPadraoComponent,
+    InputPadraoTemplateComponent,
+    PrimeNgCalendarMaskDirective,
+    CpfCnpjFormatPipe,
+    MaskDinamicPipe,
+    ValueBooleanPipe,
+    ValueOrTracePipe,
     TelefoneMaskPipe
   ],
   imports: [
@@ -87,19 +87,19 @@ registerLocaleData(localePt, 'pt');
     PaginatorModule,
 
     //Components
-    ComboBoxPadraoComponent, 
-    FormFieldErrorComponent, 
-    InputAreaPadraoComponent, 
-    InputDatePadraoComponent, 
-    InputDisabledComponent, 
-    InputNumberPadraoComponent, 
-    InputPadraoComponent, 
+    ComboBoxPadraoComponent,
+    FormFieldErrorComponent,
+    InputAreaPadraoComponent,
+    InputDatePadraoComponent,
+    InputDisabledComponent,
+    InputNumberPadraoComponent,
+    InputPadraoComponent,
     InputPadraoTemplateComponent,
 
     //Pipes
-    CpfCnpjFormatPipe, 
-    MaskDinamicPipe, 
-    ValueBooleanPipe, 
+    CpfCnpjFormatPipe,
+    MaskDinamicPipe,
+    ValueBooleanPipe,
     ValueOrTracePipe,
     TelefoneMaskPipe,
 

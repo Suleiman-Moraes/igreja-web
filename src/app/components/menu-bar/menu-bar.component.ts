@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng-lts/api';
+import { Subscription } from 'rxjs';
 import { UsuarioService } from 'src/app/pages/pages-shared/services/usuario.service';
+import { SideBarService } from 'src/app/shared/services/side-bar.service';
 
 @Component({
   selector: 'app-menu-bar',
   templateUrl: './menu-bar.component.html',
   styleUrls: ['./menu-bar.component.css']
 })
-export class MenuBarComponent implements OnInit {
+export class MenuBarComponent implements OnInit, OnDestroy{
 
   public static showTemplate: boolean = true;
   visibleSidebar = false;
@@ -20,8 +22,11 @@ export class MenuBarComponent implements OnInit {
 
   items: MenuItem[];
 
+  subscription: Subscription;
+
   constructor(
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private sideBarService: SideBarService
   ) { }
 
   ngOnInit(): void {
@@ -34,6 +39,17 @@ export class MenuBarComponent implements OnInit {
     else {
       sessionStorage.setItem('isDark', this.isDark + '');
     }
+    this.subscription = this.sideBarService.getData().subscribe(res => {
+      if (res) {
+        if(res.close){
+          this.visibleSidebar = false;
+        }
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   get getShowTemplate(): boolean {
