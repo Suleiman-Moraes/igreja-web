@@ -4,6 +4,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
+import { GraficoModule } from './modules/grafico/grafico.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { HomeComponent } from './components/home/home.component';
 ],
   imports: [
     SharedModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    GraficoModule
   ]
 })
 export class PagesModule { }

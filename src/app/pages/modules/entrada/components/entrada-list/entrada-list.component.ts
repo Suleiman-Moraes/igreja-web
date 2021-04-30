@@ -15,8 +15,6 @@ export class EntradaListComponent extends BaseResourceListComponent {
   igrejas: any[];
   tipoEntradas: any[];
 
-  informacao: any = null;
-
   constructor(
     protected service: EntradaService,
     protected injector: Injector,
@@ -53,7 +51,7 @@ export class EntradaListComponent extends BaseResourceListComponent {
       this.service.findByParams(this.filterForm.value).subscribe(
         responseApi => {
           this.tratarResponseApi(responseApi);
-          this.buscar(this.service.getInformacao(this.filterForm.value), 'informacao');
+          this.service.sendData({ carregarInformacoes: { filter: this.filterForm.value } });
           this.blockUI.stop();
         }, err => {
           this.blockUI.stop();

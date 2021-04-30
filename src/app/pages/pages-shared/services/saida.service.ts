@@ -1,5 +1,5 @@
 import { Injectable, Injector } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { BaseResourceService } from 'src/app/shared/components/base-resource-service/base-resource.service';
 import { environment } from 'src/environments/environment';
@@ -9,6 +9,8 @@ import { environment } from 'src/environments/environment';
 })
 export class SaidaService extends BaseResourceService {
   private route: string = `${environment.API_URL}/api/saida`;
+
+  private subject = new BehaviorSubject<any>(null);
 
   constructor(protected injector: Injector) {
     super(`${environment.API_URL}/api/saida`, injector);
@@ -33,5 +35,13 @@ export class SaidaService extends BaseResourceService {
       map((res: any) => res),
       catchError(this.handleError)
     );
+  }
+
+  sendData(data: any): void {
+    this.subject.next(data);
+  }
+
+  getData() {
+    return this.subject;
   }
 }

@@ -45,6 +45,7 @@
               "br-validations",
               "jspdf-autotable",
               "jspdf",
+              "chart.js",
               "toastr"
             ],
             "outputPath": "dist/igreja-web",

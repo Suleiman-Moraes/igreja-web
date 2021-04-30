@@ -10,7 +10,7 @@ export const environment = {
   API_URL: 'http://localhost:8080',
   tokenAllowedDomains: [ new RegExp('localhost:8080') ],
   tokenDisallowedRoutes: [ new RegExp('\/oauth\/token') ],
-  URL_LOGIN: 'http://localhost:4200/#/pages/login'
+  URL_LOGIN: 'http://localhost:4200/#/login'
 };
 
 /*

@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:dev": "ng build --deploy-url=/igreja-web/ --base-href=/igreja-web/",
-    "build:prod": "ng build --configuration=production --deploy-url=/igreja-web/ --base-href=/igreja-web/",
+    "build:prod": "ng build --prod --base-href /igreja-web/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

@@ -1,18 +1,18 @@
-<nav class="navbar navbar-light font-padrao cards" *ngIf="getShowTemplate">
+<nav class="navbar navbar-light font-padrao backgroundIgreja" *ngIf="getShowTemplate">
     <a class="navbar-brand" href="#/pages">
         <img src="assets/img/home-cafe.PNG" height="40" class="p-mr-2" loading="lazy">
     </a>
     <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <a href="#" style="color: var(--text-color);" (click)="openCloseSideBar($event)"><i
-                    class="pi pi-fw pi-bars"></i></a>
+            <a href="#" style="color: white;" (click)="openCloseSideBar($event)"><i class="pi pi-fw pi-bars"></i></a>
         </li>
     </ul>
 
     <div class="my-2 my-lg-0">
         <div class="btn-group">
-            <button #btn type="button" pButton icon="pi pi-fw pi-user" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false"></button>
+            <button #btn type="button" pButton [label]="user.nome" icon="pi pi-fw pi-user" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" style="background-color: transparent; border: 0;">
+            </button>
             <div class="dropdown-menu dropdown-menu-right"
                 style="margin-top: 0px;border-top-width: 1px;padding-top: 0px;" align="center">
                 <app-avatar></app-avatar>

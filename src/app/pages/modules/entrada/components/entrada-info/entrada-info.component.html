@@ -1,0 +1,78 @@
+<div *ngIf="informacao">
+    <div class="form-row">
+        <!-- Coluna 1 -->
+        <div class="form-group col-md-6">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <strong>Período:</strong>
+                </div>
+                <div class="form-group col-md-8">
+                    {{ informacao.filtro && informacao.filtro.mesAno ? (informacao.filtro.mesAno | date : "MMMM 'de'
+                    yyyy").capitalize() : 'Não informado' }}
+                </div>
+                <div class="form-group col-md-4">
+                    <strong>Total de registros:</strong>
+                </div>
+                <div class="form-group col-md-8">
+                    {{ informacao.totalRegistros }}
+                </div>
+            </div>
+        </div>
+        <!-- Coluna 2 -->
+        <div class="form-group col-md-6">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <strong>Valor total:</strong>
+                </div>
+                <div class="form-group col-md-8">
+                    {{ informacao.valorTotal | currency:'BRL' }}
+                </div>
+                <div class="form-group col-md-4">
+                    <strong>Média por registro:</strong>
+                </div>
+                <div class="form-group col-md-8">
+                    {{ informacao.media | currency:'BRL' }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row" *ngFor="let item of informacao.tipoEntradaInfomacoes" [hidden]="!detalhe">
+        <div class="form-group col-12">
+            <hr>
+        </div>
+        <!-- Coluna 1 -->
+        <div class="form-group col-md-6">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <strong>Tipo de entrada:</strong>
+                </div>
+                <div class="form-group col-md-8">
+                    {{ item.tipoEntradaNome }}
+                </div>
+                <div class="form-group col-md-4">
+                    <strong>Total de registros:</strong>
+                </div>
+                <div class="form-group col-md-8">
+                    {{ item.totalRegistros }}
+                </div>
+            </div>
+        </div>
+        <!-- Coluna 2 -->
+        <div class="form-group col-md-6">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <strong>Valor total:</strong>
+                </div>
+                <div class="form-group col-md-8">
+                    {{ item.valorTotal | currency:'BRL' }}
+                </div>
+                <div class="form-group col-md-4">
+                    <strong>Média por registro:</strong>
+                </div>
+                <div class="form-group col-md-8">
+                    {{ item.media | currency:'BRL' }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
