@@ -9,7 +9,7 @@ import { SideBarService } from 'src/app/shared/services/side-bar.service';
   templateUrl: './menu-bar.component.html',
   styleUrls: ['./menu-bar.component.css']
 })
-export class MenuBarComponent implements OnInit, OnDestroy{
+export class MenuBarComponent implements OnInit, OnDestroy {
 
   public static showTemplate: boolean = true;
   visibleSidebar = false;
@@ -37,11 +37,14 @@ export class MenuBarComponent implements OnInit, OnDestroy{
       this.changeTheme();
     }
     else {
+      if ('false' != sessionStorage.getItem('isDark') && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        this.changeTheme();
+      }
       sessionStorage.setItem('isDark', this.isDark + '');
     }
     this.subscription = this.sideBarService.getData().subscribe(res => {
       if (res) {
-        if(res.close){
+        if (res.close) {
           this.visibleSidebar = false;
         }
       }

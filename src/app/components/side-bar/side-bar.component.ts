@@ -9,44 +9,7 @@ import { BaseResourceUtilComponent } from 'src/app/shared/components/base-resour
 })
 export class SideBarComponent extends BaseResourceUtilComponent implements OnInit {
 
-  menus: any[] = [
-    {
-      id: 2,
-      nome: 'Lançamentos',
-      icon: 'pi pi-pencil',
-      menuPai: null,
-      itens: [
-        {
-          nome: 'Saídas',
-          icon: 'pi pi-pencil',
-          url: '/pages/saida'
-        },
-        {
-          nome: 'Entradas',
-          icon: 'pi pi-pencil',
-          url: '/pages/entrada'
-        }
-      ]
-    },
-    {
-      id: 3,
-      nome: 'Gerência',
-      icon: 'pi pi-pencil',
-      menuPai: null,
-      itens: [
-        {
-          nome: 'Pessoas',
-          icon: 'pi pi-pencil',
-          url: '/pages/pessoa'
-        },
-        {
-          nome: 'Dizimistas',
-          icon: 'pi pi-dollar',
-          url: '/pages'
-        }
-      ]
-    },
-  ];
+  menus: any[] = [];
 
   constructor(
     protected injector: Injector,
