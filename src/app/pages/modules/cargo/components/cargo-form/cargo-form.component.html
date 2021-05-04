@@ -1,0 +1,44 @@
+<p-card>
+    <div class="form-row">
+        <div class="form-group col-md-6 p-card-title">
+            {{ pageTitle }}
+        </div>
+        <div class="form-group col-md-6">
+            <button pButton pRipple type="button" label="Voltar" icon="pi pi-arrow-left" style="float: right;"
+                (click)="back()">
+            </button>
+        </div>
+    </div>
+    <form [formGroup]="formulario" novalidate>
+        <div class="form-row">
+            <app-input-padrao class="form-group col-md-12" for-name="nome" nome="Nome" [formulario]="formulario">
+            </app-input-padrao>
+        </div>
+        <div class="form-row">
+            <app-input-area-padrao class="form-group col-md-12" for-name="descricao" nome="Descrição"
+                [formulario]="formulario">
+            </app-input-area-padrao>
+        </div>
+        <div class="form-row" *ngIf="permissoes">
+            <div class="form-group col-md-12">
+                <p-pickList [source]="permissoes" [target]="selecionadas" [dragdrop]="true" [responsive]="true"
+                    filterBy="nome" sourceFilterPlaceholder="Filtrar por Nome"
+                    targetFilterPlaceholder="Filtrar por Nome" sourceHeader="Permissões" targetHeader="Selecionadas">
+                    <ng-template let-p pTemplate="item">
+                        <div class="product-list-detail">
+                            <h5 class="p-mb-2">{{p.nome}}</h5>
+                        </div>
+                    </ng-template>
+                </p-pickList>
+            </div>
+        </div>
+    </form>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <div align="center">
+                <button pButton pRipple type="button" label="Salvar" (click)="submitForm()" icon="pi pi-save">
+                </button>
+            </div>
+        </div>
+    </div>
+</p-card>

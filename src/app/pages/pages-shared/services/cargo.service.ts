@@ -21,10 +21,10 @@ export class CargoService extends BaseResourceService {
   //   );
   // }
 
-  // ativar(id): Observable<any> {
-  //   return this.http.put(`${this.route}/ativar/${id}`, null).pipe(
-  //     map((res: any) => res),
-  //     catchError(this.handleError)
-  //   );
-  // }
+  ativar(id): Observable<any> {
+    return this.http.put(`${this.route}/ativar/${id}`, null).pipe(
+      map((res: any) => res),
+      catchError(this.handleError)
+    );
+  }
 }

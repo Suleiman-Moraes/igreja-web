@@ -52,8 +52,11 @@ export abstract class BaseResourceListComponent extends BaseResourceUtilComponen
             this.size = event.rows;
             this.page = event.page;
             this.filterForm.get('size').setValue(this.size);
-            this.filterForm.get('page').setValue(this.page);
         }
+        else{
+            this.page = 0;
+        }
+        this.filterForm.get('page').setValue(this.page);
         this.findByPararamsFilter();
     }
 

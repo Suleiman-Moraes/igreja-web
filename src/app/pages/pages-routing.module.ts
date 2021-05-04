@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
+  { path: 'cargo', loadChildren: () => import('./modules/cargo/cargo.module').then(m => m.CargoModule) },
   { path: 'formapagamento', loadChildren: () => import('./modules/forma-pagamento/forma-pagamento.module').then(m => m.FormaPagamentoModule) },
   { path: 'igreja', loadChildren: () => import('./modules/igreja/igreja.module').then(m => m.IgrejaModule) },
   { path: 'permissao', loadChildren: () => import('./modules/permissao/permissao.module').then(m => m.PermissaoModule) },
