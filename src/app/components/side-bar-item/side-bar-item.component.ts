@@ -26,9 +26,9 @@ export class SideBarItemComponent implements OnInit {
     }
   }
 
-  navegar(url: string, event?: Event): void {
+  navegar(url): void {
     this.sideBarService.sendData({ close: true });
-    this.router.navigate([url.replace('#', '')]);
+    this.router.navigate([url]);
   }
 
   clickExpand(i): void {

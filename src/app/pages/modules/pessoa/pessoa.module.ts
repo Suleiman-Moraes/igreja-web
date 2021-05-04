@@ -8,6 +8,8 @@ import { PessoaPerfilComponent } from './components/pessoa-perfil/pessoa-perfil.
 import { PessoaFormRecycleComponent } from './components/pessoa-form-recycle/pessoa-form-recycle.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { EnderecoModule } from '../endereco/endereco.module';
+import { PessoaDizimistaComponent } from './components/pessoa-dizimista/pessoa-dizimista.component';
+import { DialogModule } from 'primeng-lts/dialog';
 
 
 @NgModule({
@@ -15,12 +17,14 @@ import { EnderecoModule } from '../endereco/endereco.module';
     PessoaListComponent, 
     PessoaFormComponent, 
     PessoaPerfilComponent, 
-    PessoaFormRecycleComponent
+    PessoaFormRecycleComponent, 
+    PessoaDizimistaComponent
   ],
   imports: [
     SharedModule,
     PessoaRoutingModule,
-    EnderecoModule
+    EnderecoModule,
+    DialogModule
   ]
 })
 export class PessoaModule { }

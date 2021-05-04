@@ -5,10 +5,12 @@ import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
+  { path: 'menu', loadChildren: () => import('./modules/menu/menu.module').then(m => m.MenuModule) },
+  { path: 'itemmenu', loadChildren: () => import('./modules/item-menu/item-menu.module').then(m => m.ItemMenuModule) },
   { path: 'pessoa', loadChildren: () => import('./modules/pessoa/pessoa.module').then(m => m.PessoaModule) },
   { path: 'saida', loadChildren: () => import('./modules/saida/saida.module').then(m => m.SaidaModule) },
   { path: 'entrada', loadChildren: () => import('./modules/entrada/entrada.module').then(m => m.EntradaModule) },
-  { path: '', redirectTo: 'home' },
+  { path: '', redirectTo: 'pessoa/dizimista' },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: '404', component: NotFoundComponent }
 ];

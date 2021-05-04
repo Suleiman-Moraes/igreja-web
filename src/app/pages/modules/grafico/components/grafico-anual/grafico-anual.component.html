@@ -17,7 +17,7 @@
     </div>
     <div class="form-row">
         <div class="form-group col-md-12">
-            <p-chart type="bar" height="300px" [data]="dataBarra" *ngIf="dataBarra.datasets"
+            <p-chart type="bar" height="300px" [data]="dataBarra" *ngIf="datasets"
                 (onDataSelect)="selectData($event)">
             </p-chart>
             <div *ngIf="!datasets" align="center" style="margin-top: 150px;">

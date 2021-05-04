@@ -37,6 +37,13 @@ export class EntradaService extends BaseResourceService {
     );
   }
 
+  inserirDizimo(pessoaId, valor): Observable<any> {
+    return this.http.post(`${this.apiPath}/dizimo/${pessoaId}?valor=${valor}`, null).pipe(
+      map((res: any) => res),
+      catchError(this.handleError)
+    );
+  }
+
   sendData(data: any): void {
     this.subject.next(data);
   }

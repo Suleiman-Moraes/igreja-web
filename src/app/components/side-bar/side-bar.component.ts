@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
+import { MenuService } from 'src/app/pages/pages-shared/services/menu.service';
+import { BaseResourceUtilComponent } from 'src/app/shared/components/base-resource-util/base-resource-util.component';
 
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',
   styleUrls: ['./side-bar.component.css']
 })
-export class SideBarComponent implements OnInit {
+export class SideBarComponent extends BaseResourceUtilComponent implements OnInit {
 
   menus: any[] = [
     {
-      id: 1,
+      id: 2,
       nome: 'Lançamentos',
       icon: 'pi pi-pencil',
       menuPai: null,
@@ -17,17 +19,17 @@ export class SideBarComponent implements OnInit {
         {
           nome: 'Saídas',
           icon: 'pi pi-pencil',
-          url: '#/pages/saida'
+          url: '/pages/saida'
         },
         {
           nome: 'Entradas',
           icon: 'pi pi-pencil',
-          url: '#/pages/entrada'
+          url: '/pages/entrada'
         }
       ]
     },
     {
-      id: 1,
+      id: 3,
       nome: 'Gerência',
       icon: 'pi pi-pencil',
       menuPai: null,
@@ -35,14 +37,25 @@ export class SideBarComponent implements OnInit {
         {
           nome: 'Pessoas',
           icon: 'pi pi-pencil',
-          url: '#/pages/pessoa'
+          url: '/pages/pessoa'
+        },
+        {
+          nome: 'Dizimistas',
+          icon: 'pi pi-dollar',
+          url: '/pages'
         }
       ]
     },
   ];
 
-  constructor() { }
+  constructor(
+    protected injector: Injector,
+    private menuService: MenuService
+  ) {
+    super(injector);
+  }
 
-  ngOnInit(): void { }
-
+  ngOnInit(): void {
+    this.buscar(this.menuService.getAll(), 'menus');
+  }
 }

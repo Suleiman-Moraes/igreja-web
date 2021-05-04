@@ -37,6 +37,13 @@ export class PessoaService extends BaseResourceService {
     );
   }
 
+  findByFilterDizimista(filterForm: any): Observable<any> {
+    return this.http.post(`${this.route}/dizimista`, filterForm).pipe(
+      map((res: any) => res),
+      catchError(this.handleError)
+    );
+  }
+
   ativar(id): Observable<any> {
     return this.http.put(`${this.apiPath}/ativar/${id}`, null).pipe(
       map((res: any) => res),

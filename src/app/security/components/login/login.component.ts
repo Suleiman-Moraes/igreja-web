@@ -31,7 +31,7 @@ export class LoginComponent extends BaseResourceUtilComponent implements OnInit 
   login() {
     this.authenticationService.login(this.loginForm.value.login, this.loginForm.value.password)
       .then(() => {
-        this.router.navigate(['/pages/home']);
+        this.router.navigate(['/pages']);
       })
       .catch(erro => {
         this.tratarErro(erro);

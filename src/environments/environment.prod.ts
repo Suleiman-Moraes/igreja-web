@@ -1,7 +1,10 @@
 export const environment = {
+  envName: 'PROD',
   production: true,
-  apiUrl: 'https://igreja-service.herokuapp.com',
+  test: false,
+  API_URL: 'https://igreja-service.herokuapp.com',
 
-  tokenAllowedDomains: [ new RegExp('suleiman-moraes.github.io') ],
-  tokenDisallowedRoutes: [ new RegExp('\/oauth\/token') ]
+  tokenAllowedDomains: [ new RegExp('igreja-service.herokuapp.com') ],
+  tokenDisallowedRoutes: [ new RegExp('\/oauth\/token') ],
+  URL_LOGIN: 'https://igreja-service.herokuapp.com/#/login'
 };
