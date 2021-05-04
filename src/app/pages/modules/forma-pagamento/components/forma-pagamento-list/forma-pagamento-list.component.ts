@@ -1,16 +1,16 @@
-import { Component, Injector, OnInit } from '@angular/core';
-import { ItemMenuService } from 'src/app/pages/pages-shared/services/item-menu.service';
+import { Component, Injector } from '@angular/core';
+import { FormaPagamentoService } from 'src/app/pages/pages-shared/services/forma-pagamento.service';
 import { BaseResourceListComponent } from 'src/app/shared/components/base-resource-list/base-resource-list.component';
 
 @Component({
-  selector: 'app-item-menu-list',
-  templateUrl: './item-menu-list.component.html',
-  styleUrls: ['./item-menu-list.component.css']
+  selector: 'app-forma-pagamento-list',
+  templateUrl: './forma-pagamento-list.component.html',
+  styleUrls: ['./forma-pagamento-list.component.css']
 })
-export class ItemMenuListComponent extends BaseResourceListComponent {
+export class FormaPagamentoListComponent extends BaseResourceListComponent {
 
   constructor(
-    protected service: ItemMenuService,
+    protected service: FormaPagamentoService,
     protected injector: Injector
   ) {
     super(service, injector);

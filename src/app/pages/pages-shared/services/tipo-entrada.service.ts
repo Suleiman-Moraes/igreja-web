@@ -13,4 +13,11 @@ export class TipoEntradaService extends BaseResourceService {
   constructor(protected injector: Injector) {
     super(`${environment.API_URL}/api/tipoentrada`, injector);
   }
+
+  ativar(id): Observable<any> {
+    return this.http.put(`${this.apiPath}/ativar/${id}`, null).pipe(
+      map((res: any) => res),
+      catchError(this.handleError)
+    );
+  }
 }

@@ -1,16 +1,16 @@
-import { Component, Injector, OnInit } from '@angular/core';
-import { ItemMenuService } from 'src/app/pages/pages-shared/services/item-menu.service';
+import { Component, Injector } from '@angular/core';
+import { IgrejaService } from 'src/app/pages/pages-shared/services/igreja.service';
 import { BaseResourceListComponent } from 'src/app/shared/components/base-resource-list/base-resource-list.component';
 
 @Component({
-  selector: 'app-item-menu-list',
-  templateUrl: './item-menu-list.component.html',
-  styleUrls: ['./item-menu-list.component.css']
+  selector: 'app-igreja-list',
+  templateUrl: './igreja-list.component.html',
+  styleUrls: ['./igreja-list.component.css']
 })
-export class ItemMenuListComponent extends BaseResourceListComponent {
+export class IgrejaListComponent extends BaseResourceListComponent {
 
   constructor(
-    protected service: ItemMenuService,
+    protected service: IgrejaService,
     protected injector: Injector
   ) {
     super(service, injector);

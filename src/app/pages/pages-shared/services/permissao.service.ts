@@ -13,11 +13,4 @@ export class PermissaoService extends BaseResourceService {
   constructor(protected injector: Injector) {
     super(`${environment.API_URL}/api/permissao`, injector);
   }
-
-  // ativar(id): Observable<any> {
-  //   return this.http.put(`${this.apiPath}/ativar/${id}`, null).pipe(
-  //     map((res: any) => res),
-  //     catchError(this.handleError)
-  //   );
-  // }
 }
